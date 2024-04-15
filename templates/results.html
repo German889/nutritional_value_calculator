@@ -1,0 +1,82 @@
+<!-- results.html -->
+<!DOCTYPE html>
+<html>
+<head>
+  <link rel="stylesheet" href="https://rsms.me/inter/inter.css">
+  <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.1.2/dist/tailwind.min.css" rel="stylesheet">
+
+</head>
+<body>
+  <header class="bg-gray-800 text-white py-4 px-6">
+    <div class="container mx-auto flex justify-between items-center">
+      <a href="#" class="text-lg font-semibold">Пищевая ценность</a>
+      <nav>
+        <ul class="flex space-x-4">
+          <li><a href="#" class="hover:bg-gray-500 px-3 py-2 rounded">Главная</a></li>
+          <li><a href="https://www.youtube.com/watch?v=iEXPkv7lJgc" class="hover:bg-gray-500 px-3 py-2 rounded">О нас</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+  <div class="w-full h-screen" style="background-image: url('https://images.unsplash.com/photo-1591189863430-ab87e120f312?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D');">
+    <div class="max-w-xl mx-auto bg-white rounded-lg p-6">
+      <h1 class="text-center text-black font-bold text-xl">Пищевая ценность ингридиентов</h1>    
+    </div>
+
+    <div class="flex justify-center pt-8">
+      <table class="border-collapse border-2 border-black bg-white">
+        <thead>
+          <tr>
+            <th class="border border-black px-4 py-2">Ингредиент</th>
+            <th class="border border-black px-4 py-2">Масса (г)</th>
+            <th class="border border-black px-4 py-2">Белки (г)</th>
+            <th class="border border-black px-4 py-2">Жиры (г)</th>
+            <th class="border border-black px-4 py-2">Углеводы (г)</th>
+            <th class="border border-black px-4 py-2">Ккал</th>
+          </tr>
+        </thead>
+        <tbody>
+          {% for ingredient_nutrition in ingredients %}
+          <tr>
+            <td class="border border-black px-4 py-2">{{ ingredient_nutrition.name }}</td>
+            <td class="border border-black px-4 py-2">{{ ingredient_nutrition.amount }}</td>
+            <td class="border border-black px-4 py-2">{{ ingredient_nutrition.protein }}</td>
+            <td class="border border-black px-4 py-2">{{ ingredient_nutrition.fat }}</td>
+            <td class="border border-black px-4 py-2">{{ ingredient_nutrition.carbohydrate }}</td>
+            <td class="border border-black px-4 py-2">{{ ingredient_nutrition.energy_value }}</td>
+          </tr>
+          {% endfor %}
+        </tbody>
+      </table>
+    </div>
+    <br>
+    
+    <div class="max-w-xl mx-auto bg-white rounded-lg p-6">
+      <h1 class="text-center text-black font-bold text-xl">Общая пишевая ценность блюда</h1>    
+    </div>
+    <div class="flex justify-center items-center">
+      <table class="border-collapse border-2 border-black bg-white m-4">
+        <tbody>
+          <tr>
+            <td class="border border-black px-4 py-2">Белки</td>
+            <td class="border border-black px-4 py-2">{{ dish_nutrition.protein | round(2) }} грамм</td>
+          </tr>
+          <tr>
+            <td class="border border-black px-4 py-2">Жиры</td>
+            <td class="border border-black px-4 py-2">{{ dish_nutrition.fat | round(2) }} грамм</td>
+          </tr>
+          <tr>
+            <td class="border border-black px-4 py-2">Углеводы</td>
+            <td class="border border-black px-4 py-2">{{ dish_nutrition.carbohydrate | round(2) }} грамм</td>
+          </tr>
+          <tr>
+            <td class="border border-black px-4 py-2">Ккал</td>
+            <td class="border border-black px-4 py-2">{{ dish_nutrition.energy_value | round(2) }}</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    
+  </div>
+<body>
+<html>

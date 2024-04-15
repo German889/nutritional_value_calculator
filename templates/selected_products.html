@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Отмеченные продукты</title>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.1.2/dist/tailwind.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://rsms.me/inter/inter.css">
+</head>
+<body>
+    <header class="bg-gray-800 text-white py-4 px-6">
+        <div class="container mx-auto flex justify-between items-center">
+          <a href="#" class="text-lg font-semibold">Расчёт пищевой ценности</a>
+          <nav>
+            <ul class="flex space-x-4">
+              <li><a href="#" class="hover:bg-gray-500 px-3 py-2 rounded">Главная</a></li>
+              <li><a href="https://www.youtube.com/watch?v=iEXPkv7lJgc" class="hover:bg-gray-500 px-3 py-2 rounded">О нас</a></li>
+            </ul>
+          </nav>
+        </div>
+    </header>
+    <div class="w-full h-screen" style="background-image: url('https://images.unsplash.com/photo-1591189863430-ab87e120f312?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D');">
+      <div class="max-w-xl mx-auto bg-white rounded-lg p-6">
+        <h1 class="text-center text-black font-bold text-4xl mb-6">Отмеченные продукты</h1>
+        <form method="POST" action="/calculate" class="w-full">
+            <div class="flex flex-wrap -mx-2 mb-4">
+                {% for product in products %}
+                <div class="flex flex-wrap md:flex-nowrap items-center w-full px-2 mb-4">
+                    <label for="weight_{{ product.id }}" class="w-full md:w-1/2 text-right mr-2 mb-2 md:mb-0 break-words">{{ product.name }}</label>
+                    <input type="number" id="weight_{{ product.id }}" name="weight_{{ product.id }}" class="border-2 rounded w-full md:w-1/2 min-w-0 md:min-w-32" required>
+                </div>
+                {% endfor %}
+            </div>
+            <div class="text-center">
+                <input type="submit" value="Рассчитать" class="text-white font-bold text-lg bg-gray-800 hover:bg-gray-500 rounded py-2 px-4 focus:outline-none focus:shadow-outline transform transition-colors duration-300">
+            </div>
+        </form>
+      </div>
+    </div>
+</body>
+</html>
